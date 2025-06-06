@@ -120,7 +120,7 @@ public partial class ChecksumApplet : Form
         }
 
         MessageBox.Show(
-            sb.Length > 0 ? sb.ToString() : "No downloads yet.",
+            latestChecksums.Count > 0 ? sb.ToString() : "No downloads yet.",
             $"ChecksumDownloads v.{version}",
             MessageBoxButtons.OK,
             MessageBoxIcon.Information);
