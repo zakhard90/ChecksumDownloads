@@ -33,15 +33,15 @@ partial class ChecksumApplet
         watcher.EnableRaisingEvents = true;
         watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size;
         watcher.SynchronizingObject = this;
-        watcher.Created += OnFileCreated;
-        watcher.Renamed += OnFileRenamed;
+        watcher.Created += OnFileCreatedAsync;
+        watcher.Renamed += OnFileRenamedAsync;
         // 
         // notifyIcon
         // 
         notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
         notifyIcon.Text = "Checksum Download";
         notifyIcon.Visible = true;
-        notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
+        notifyIcon.MouseDoubleClick += NotifyIconOnMouseDoubleClick;
         // 
         // ChecksumApplet
         // 
@@ -50,7 +50,7 @@ partial class ChecksumApplet
         ClientSize = new Size(800, 428);
         Name = "ChecksumApplet";
         Text = "Checksum Applet";
-        Load += Applet_Load;
+        Load += AppletOnLoad;
         ((System.ComponentModel.ISupportInitialize)watcher).EndInit();
         ResumeLayout(false);
     }

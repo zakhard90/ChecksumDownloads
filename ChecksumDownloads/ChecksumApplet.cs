@@ -21,7 +21,7 @@ public partial class ChecksumApplet : Form
         InitializeComponent();
     }
 
-    private void Applet_Load(object sender, EventArgs e)
+    private void AppletOnLoad(object sender, EventArgs e)
     {
         watcher.Path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
 
@@ -34,12 +34,12 @@ public partial class ChecksumApplet : Form
         this.Hide();
     }
 
-    private async void OnFileCreated(object sender, FileSystemEventArgs e)
+    private async void OnFileCreatedAsync(object sender, FileSystemEventArgs e)
     {
         await HandleChangeAsync(sender, e);
     }
 
-    private async void OnFileRenamed(object sender, FileSystemEventArgs e)
+    private async void OnFileRenamedAsync(object sender, FileSystemEventArgs e)
     {
         await HandleChangeAsync(sender, e);
     }
@@ -93,7 +93,7 @@ public partial class ChecksumApplet : Form
         latestChecksums.Dequeue();
     }
 
-    private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+    private void NotifyIconOnMouseDoubleClick(object sender, MouseEventArgs e)
     {
         var sb = new StringBuilder();
         var hintLength = 12;
