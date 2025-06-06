@@ -9,6 +9,7 @@ public partial class ChecksumApplet : Form
     private const string version = "0.1";
     private const int maxEntries = 3;
     private readonly string[] allowedExtensions = [".exe", ".msi", ".zip", ".rar", ".7z"];
+    private readonly string[] ignoedExtensions = [".tmp", ".crdownload", ".part"];
     private readonly Queue<(string, string)> latestChecksums = new();
 
     public ChecksumApplet()
@@ -31,19 +32,16 @@ public partial class ChecksumApplet : Form
 
         key.SetValue("ChecksumDownloads", exePath);
         this.Hide();
-        return;
     }
 
     private async void OnFileCreated(object sender, FileSystemEventArgs e)
     {
         await HandleChangeAsync(sender, e);
-        return;
     }
 
     private async void OnFileRenamed(object sender, FileSystemEventArgs e)
     {
         await HandleChangeAsync(sender, e);
-        return;
     }
 
     private async Task HandleChangeAsync(object sender, FileSystemEventArgs e)
@@ -52,7 +50,7 @@ public partial class ChecksumApplet : Form
         {
             var ext = Path.GetExtension(e.FullPath).ToLowerInvariant();
 
-            if (ext == ".tmp" || ext == ".crdownload" || ext == ".part")
+            if (ignoedExtensions.Contains(ext))
                 return;
 
             if (!allowedExtensions.Contains(ext))
@@ -84,17 +82,15 @@ public partial class ChecksumApplet : Form
         notifyIcon.BalloonTipTitle = $"Downloaded: {fileName}";
         notifyIcon.BalloonTipText = $"SHA256: {hash[..hintLength]}...{hash[^hintLength..]}";
         notifyIcon.ShowBalloonTip(5000);
-        return;
     }
 
     private void AddToLatest(string fileName, string hash)
     {
         latestChecksums.Enqueue((fileName, hash));
-        if (latestChecksums.Count > maxEntries)
-        {
-            latestChecksums.Dequeue();
-        }
-        return;
+        if (latestChecksums.Count <= maxEntries)
+            return;
+        
+        latestChecksums.Dequeue();
     }
 
     private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -124,6 +120,5 @@ public partial class ChecksumApplet : Form
             $"ChecksumDownloads v.{version}",
             MessageBoxButtons.OK,
             MessageBoxIcon.Information);
-        return;
     }
 }
