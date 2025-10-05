@@ -8,9 +8,11 @@ public partial class ChecksumApplet : Form
 {
     private const string version = "0.1";
     private const int maxEntries = 3;
+    private const int delay = 3000;
+    private const int duration = 5000;
     private readonly string[] allowedExtensions = [".exe", ".msi", ".zip", ".rar", ".7z"];
     private readonly string[] ignoedExtensions = [".tmp", ".crdownload", ".part"];
-    private readonly Queue<(string, string)> latestChecksums = new();
+    private readonly Queue<(DateTime Time, string FileName, string Checksum)> latestChecksums = new();
 
     public ChecksumApplet()
     {
@@ -56,9 +58,13 @@ public partial class ChecksumApplet : Form
             if (!allowedExtensions.Contains(ext))
                 return;
 
-            await Task.Delay(3000);
+            await Task.Delay(delay);
             var hash = ComputeSHA256(e.FullPath);
             var fileName = Path.GetFileName(e.FullPath);
+
+            if (AlreadyNotified(fileName, hash))
+                return;
+
             AddToLatest(fileName, hash);
             ShowNotification(fileName, hash);
         }
@@ -81,23 +87,34 @@ public partial class ChecksumApplet : Form
         var hintLength = 8;
         notifyIcon.BalloonTipTitle = $"Downloaded: {fileName}";
         notifyIcon.BalloonTipText = $"SHA256: {hash[..hintLength]}...{hash[^hintLength..]}";
-        notifyIcon.ShowBalloonTip(5000);
+        notifyIcon.ShowBalloonTip(duration);
     }
 
     private void AddToLatest(string fileName, string hash)
     {
-        latestChecksums.Enqueue((fileName, hash));
+        var now = DateTime.Now;
+        latestChecksums.Enqueue((now, fileName, hash));
         if (latestChecksums.Count <= maxEntries)
             return;
-        
+
         latestChecksums.Dequeue();
+    }
+    private bool AlreadyNotified(string fileName, string hash)
+    {
+        var now = DateTime.Now;
+        foreach (var (t, f, h) in latestChecksums)
+        {
+            if (f == fileName && h == hash && (now - t).TotalMilliseconds < delay)
+                return true;
+        }
+        return false;
     }
 
     private void NotifyIconOnMouseDoubleClick(object sender, MouseEventArgs e)
     {
         var sb = new StringBuilder();
         var hintLength = 12;
-        foreach (var (fileName, hash) in latestChecksums)
+        foreach (var (_, fileName, hash) in latestChecksums)
         {
             sb.AppendLine($"File: {fileName[..hintLength]}...{fileName[^hintLength..]}");
             sb.AppendLine($"SHA256: {hash}");
