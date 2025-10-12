@@ -10,11 +10,8 @@ internal static class Program
         bool createdNew;
         using Mutex mutex = new(true, "ChecksumDownloadsAppMutex", out createdNew);
 
-        if (!createdNew)
-        {
-            MessageBox.Show("The application is already running.", "Checksum Downloads");
+        if (!createdNew)        
             return;
-        }
 
         ApplicationConfiguration.Initialize();
         Application.Run(new ChecksumApplet());

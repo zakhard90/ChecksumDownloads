@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyTitle>Checksum Downloads</AssemblyTitle>
+    <Product>Checksum Downloads</Product>
+    <Company>Zakhar Deyneka</Company>
+    <Description>Simple checksum verification for downloaded files</Description>
+    <Version>0.1.0</Version>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
