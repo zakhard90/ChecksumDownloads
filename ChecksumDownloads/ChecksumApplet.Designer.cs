@@ -39,7 +39,7 @@ partial class ChecksumApplet
         // notifyIcon
         // 
         notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-        notifyIcon.Text = "Checksum Download";
+        notifyIcon.Text = "Checksum Downloads";
         notifyIcon.Visible = true;
         notifyIcon.MouseDoubleClick += NotifyIconOnMouseDoubleClick;
         // 
