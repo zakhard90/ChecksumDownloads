@@ -25,13 +25,12 @@
 
 ## Usage
 
-1. Download any ".exe", ".msi", ".zip", ".rar" or ".7z" file in your Downloads folder.  
-2. A notification will appear in the toolbar showing the file’s **SHA-256 checksum**.  
-3. Click the system tray icon to display the latest checksums.  
+1. Download any ".exe", ".msi", ".zip", ".rar" or ".7z" file in your Downloads folder.
+2. A notification will appear in the toolbar showing the file’s **SHA-256 checksum**.
+3. Click the system tray icon to display the latest checksums.
 
 ---
 
 ## License
 
-MIT License. See [LICENSE](./LICENSE.md) for details.  
-
+Apache 2.0 License. See [LICENSE](./LICENSE.md) for details.
