@@ -6,7 +6,6 @@ namespace ChecksumDownloads;
 
 public partial class ChecksumApplet : Form
 {
-    private const string version = "0.1";
     private const int maxEntries = 3;
     private const int delay = 3000;
     private const int duration = 5000;
@@ -110,7 +109,7 @@ public partial class ChecksumApplet : Form
         return false;
     }
 
-    private void NotifyIconOnMouseDoubleClick(object sender, MouseEventArgs e)
+    private void ShowLatestList(object sender, EventArgs e)
     {
         var sb = new StringBuilder();
         var hintLength = 12;
@@ -134,8 +133,14 @@ public partial class ChecksumApplet : Form
 
         MessageBox.Show(
             latestChecksums.Count > 0 ? sb.ToString() : "No downloads yet.",
-            $"ChecksumDownloads v.{version}",
+            "Checksum Downloads",
             MessageBoxButtons.OK,
             MessageBoxIcon.Information);
+    }
+
+    private void OnExitClicked(object? sender, EventArgs e)
+    {
+        notifyIcon.Visible = false;
+        Application.Exit();
     }
 }

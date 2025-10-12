@@ -41,7 +41,14 @@ partial class ChecksumApplet
         notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
         notifyIcon.Text = "Checksum Downloads";
         notifyIcon.Visible = true;
-        notifyIcon.MouseDoubleClick += NotifyIconOnMouseDoubleClick;
+        notifyIcon.MouseDoubleClick += ShowLatestList;
+        // 
+        // contextMenu
+        // 
+        var contextMenu = new ContextMenuStrip();
+        contextMenu.Items.Add("Show latest", null, ShowLatestList);
+        contextMenu.Items.Add("Quit", null, OnExitClicked);
+        notifyIcon.ContextMenuStrip = contextMenu;
         // 
         // ChecksumApplet
         // 
