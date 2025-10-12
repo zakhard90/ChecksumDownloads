@@ -33,4 +33,4 @@
 
 ## License
 
-Apache 2.0 License. See [LICENSE](./LICENSE.md) for details.
+Apache 2.0 License. See [LICENSE](./LICENSE) for details.
