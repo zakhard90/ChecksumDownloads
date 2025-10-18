@@ -2,7 +2,7 @@
 
 **ChecksumDownloads** is a lightweight Windows application that automatically monitors your **Downloads** folder and displays the **SHA-256 checksum** of archive files, installers, and executables in a **toolbar notification**.
 
-![ChecksumDownloadsLogo](./img/ChecksumDownloads.png)
+![ChecksumDownloadsLogo](./docs/assets/ChecksumDownloads.png)
 
 ---
 
