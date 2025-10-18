@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ChecksumDownloads — Verify downloads with SHA-256</title>
+  <style>
+    /* Simple, neutral styling for GitHub Pages */
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --accent: #ac03d6;
+      --muted: #6a737d;
+      --maxw: 860px;
+      --radius: 8px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body { height:100%; margin:0; background:var(--bg); color:#111; }
+    .wrap { max-width:var(--maxw); margin:40px auto; padding:28px; }
+    header { display:flex; align-items:center; gap:16px; margin-bottom:18px; }
+    .logo { width:100px; height:100px; display:flex; align-items:center; justify-content:center; }
+    .logo img { width:100px; height:100px; }
+    h1 { margin:0; font-size:22px; }
+    p.lead { margin:8px 0 18px; color:var(--muted); }
+    .card { background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:0 1px 0 rgba(0,0,0,0.03); }
+    ul.features { list-style:none; padding-left:0; margin:0; display:grid; gap:8px; }
+    ul.features li { padding:8px 10px; border-left:4px solid rgba(3,102,214,0.1); background:transparent; }
+    .row { display:flex; gap:18px; margin-top:16px; flex-wrap:wrap; }
+    .col { flex:1 1 300px; min-width:220px; }
+    .muted { color:var(--muted); font-size:13px; }
+    a.button { display:inline-block; background:var(--accent); color:#fff; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; }
+    footer { margin-top:28px; font-size:13px; color:var(--muted); }
+    .screenshot { width:100%; min-height:180px; display:flex; align-items:center; justify-content:right; overflow: hidden; }
+    .meta { margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; }
+    code.badge { background:#e6eefc; padding:6px 8px; border-radius:6px; font-weight:700; color:var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="logo"><img src="../img/ChecksumDownloads.png" alt="Checksum Downloads logo"/></div>
+      <div>
+        <h1>ChecksumDownloads</h1>
+        <p class="lead">Lightweight Windows utility that automatically computes and displays <strong>SHA-256</strong> checksums for newly downloaded installers and archive files.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 style="margin-top:0">What it does</h2>
+      <p class="muted">ChecksumDownloads runs quietly in the background, watches download locations, and displays SHA-256 hashes via a Windows toolbar notification when new files appear.</p>
+
+      <div class="row" style="margin-top:14px">
+        <div class="col">
+          <h3 style="margin:6px 0 8px">Key features</h3>
+          <ul class="features">
+            <li>Watches common download locations automatically</li>
+            <li>Computes SHA-256 for installers and archives</li>
+            <li>Displays the checksum in a toolbar notification (toast)</li>
+            <li>Runs silently in the background</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h3 style="margin:6px 0 8px">Get started</h3>
+          <p><a class="button" href="../releases">Download v0.1.0 portable</a></p>
+
+          <div class="meta">
+            <span class="muted">Version</span><code class="badge">v0.1.0</code>
+            <span class="muted">License</span><a href="../LICENSE">MIT</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <h3 style="margin:6px 0 10px">Check it out in the system tray</h3>
+        <div class="screenshot">
+          <img src="../img/ChecksumDownloads-Screen.png" alt="You can find the Checksum Downloads icon in the system tray"/>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <h3 style="margin:6px 0 10px">Notes & known issues</h3>
+        <ul class="features" style="margin-top:0">
+          <li>Currently limited to SHA-256 checksums only.</li>
+          <li>Debounce logic for repeated notifications is improved but may need tuning on some systems.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section style="margin-top:18px">
+      <h3 style="margin:6px 0 10px">Release notes</h3>
+      <p class="muted">See the <a href="../releases/tag/v0.1.0">v0.1.0 release</a> for the initial changelog and details.</p>
+
+      <h3 style="margin:14px 0 8px">Contact / Support</h3>
+      <p class="muted">For issues, bug reports, or feature requests, open an issue on <a href="../issues">GitHub Issues</a>.</p>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> ChecksumDownloads — <a href="../LICENSE">License</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
