@@ -17,17 +17,16 @@
 
 ## Installation
 
-1. Download the latest installer from [Microsoft Store](https://apps.microsoft.com/).
-2. Run the installer and complete the setup wizard.
-3. The app will start automatically and appear in the system tray.
+1. Install the latest installer from [Microsoft Store](https://apps.microsoft.com/detail/9p3n707wj5kl).
+2. Start the app and check when it appears in the system tray.
 
 ---
 
 ## Usage
 
-1. Download any ".exe", ".msi", ".zip", ".rar" or ".7z" file in your Downloads folder.
-2. A notification will appear in the toolbar showing the file’s **SHA-256 checksum**.
-3. Click the system tray icon to display the latest checksums.
+1. Download any ".exe", ".msi", ".zip", ".rar" or ".7z" file into your Downloads folder.
+2. A notification will appear in the bottom-right corner showing the file’s **SHA-256 checksum**.
+3. Double-click on the tray icon or use the context menu to display the latest checksums.
 
 ---
 
